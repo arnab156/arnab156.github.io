@@ -1,0 +1,28 @@
+.header {
+  background-color: aliceblue;
+  height: 10vh;
+}
+
+@media only screen and (min-width: 764px) {
+  .header {
+    background-color: aliceblue;
+  }
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  height: inherit;
+  align-items: center;
+}
+
+a {
+  /* height: 2em;
+  width: 5em; */
+}
+
+a:hover {
+  cursor: pointer;
+  color: black;
+  /* box-shadow: 1em .5em 1.5em rgba(green, 0.3); */
+}

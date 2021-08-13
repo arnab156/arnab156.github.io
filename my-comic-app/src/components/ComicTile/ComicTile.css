@@ -1,0 +1,23 @@
+.block {
+  background-color: azure;
+  margin-top: 2em;
+}
+
+h2 {
+  margin-bottom: 2em;
+}
+
+img {
+  width: 50vw;
+}
+
+@media only screen and (min-width: 600px) {
+  img {
+    max-width: 17em;
+  }
+}
+
+p { 
+  font-style: oblique;
+  margin-top: 4em;
+}

@@ -48,8 +48,8 @@ const HomeView = () => {
     <div>
       <Header />   
         <div className="container">
-        
-          <div>
+    
+          <div className="arrow">
             {
               currentComicNumber > 1
               && <ChevronsLeft onClick={handlePreviousClick} />
@@ -68,7 +68,7 @@ const HomeView = () => {
             )
           }
 
-          <ChevronsRight onClick={handleNextClick} />
+          <ChevronsRight className="arrow" onClick={handleNextClick} />
         </div>
 
       <footer>

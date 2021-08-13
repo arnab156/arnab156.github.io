@@ -1,5 +1,4 @@
 import React from 'react';
-
 import './ComicTile.css';
 
 const ComicTile = ({

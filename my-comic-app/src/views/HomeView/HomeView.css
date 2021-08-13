@@ -7,3 +7,9 @@ footer {
   background-color: lightslategray;
   color: aliceblue;
 }
+
+.container {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

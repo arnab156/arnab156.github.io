@@ -1,28 +1,30 @@
 import React from 'react';
 
-export const ComicsContext = React.createContext([]);
+export const ComicsContext = React.createContext({
+  latest: [],
+});
 ComicsContext.displayName = 'Comics';
 
 const ComicsProvider = ({
   children,
 }) => {
-  const [comics, setComics] = React.useState([]);
+  const [latestComic, setLatestComic] = React.useState();
 
   React.useEffect(() => {
       (async () => {
         try { 
-          const response = await fetch("http://xkcd.com/info.0.json");
-          console.log('response', response);
-          setComics([...response]);
+           await fetch("https://getxkcd.now.sh/api/comic?num=latest")
+          .then(res => res.json())
+          .then( data => setLatestComic(data))
         } catch (error) {
-          console.log(error);
+          throw(error);
         }
       })();
   }, []);
 
   return (
     <ComicsContext.Provider
-      value={comics}
+      value={{latestComic}}
     >
       {children}
     </ComicsContext.Provider>

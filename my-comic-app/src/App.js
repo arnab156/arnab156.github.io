@@ -10,7 +10,7 @@ const App = () => (
     <div className="App">
       {/* <Background/> */}
       <Switch>
-        <ComicsProvider>
+        <ComicsProvider> 
           <Route exact path="/" component={HomeView} />
           <Route exact path="/home" component={HomeView} />
         </ComicsProvider>

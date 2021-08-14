@@ -1,23 +1,22 @@
-.block {
+.comicBlock {
   background-color: azure;
-  margin-top: 2em;
 }
 
-h2 {
+.comicBlock > h2 {
   margin-bottom: 2em;
 }
 
-img {
+.comicBlock > img {
   width: 50vw;
 }
 
 @media only screen and (min-width: 600px) {
-  img {
+  .comicBlock > img {
     max-width: 17em;
   }
 }
 
-p { 
+.comicBlock > p { 
   font-style: oblique;
   margin-top: 4em;
 }

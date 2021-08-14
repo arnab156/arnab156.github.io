@@ -9,7 +9,7 @@ const ComicTile = ({
   date,
 }) => {  
   return (
-    <div className="block">
+    <div className="comicBlock">
       <h2>{title}</h2>
       <img src={image} alt={alt} />
       <p>Comic#{num} Published:{date}</p>

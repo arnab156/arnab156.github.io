@@ -1,10 +1,12 @@
 import React from 'react';
+import { ChevronsLeft, ChevronsRight } from 'react-feather';
 
 import Header from '../../components/Header/Header';
-import './HomeView.css';
 import { ComicsContext } from '../../provider/ComicsProvider';
 import ComicTile from '../../components/ComicTile/ComicTile';
-import { ChevronsLeft, ChevronsRight } from 'react-feather';
+import Pagination from '../../components/Pagination/Pagination';
+
+import './HomeView.css';
 
 const HomeView = () => {  
   const { latestComic, getComicByNumber } = React.useContext(ComicsContext);
@@ -55,7 +57,7 @@ const HomeView = () => {
               && <ChevronsLeft onClick={handlePreviousClick} />
             }
           </div>
-       
+
           {
             comicsList && (
               <ComicTile
@@ -68,9 +70,17 @@ const HomeView = () => {
             )
           }
 
-          <ChevronsRight className="arrow" onClick={handleNextClick} />
+          <div className="arrow">
+            <ChevronsRight onClick={handleNextClick} />
+          </div>        
         </div>
-
+  
+        { 
+            <Pagination 
+              // totalPage={comicsList && comicsList[0].num}
+              currentPage={currentComicNumber}
+            />
+          }
       <footer>
         ©2021-2022 Arnab's Comics.
       </footer>

@@ -15,9 +15,19 @@ footer {
   width: 100vw;
   margin-top: 0;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: 1em auto;
 }
 
 .arrow {
-  width: 3em;
+  width: 1.5em;
+  height: 1.5em;
+  border-radius: 50%;
 }
+
+.arrow:focus {
+  background-color: rgb(234, 245, 245);
+}
+.arrow:hover {
+  background-color: rgb(234, 245, 245);
+  cursor: pointer;
+}                 

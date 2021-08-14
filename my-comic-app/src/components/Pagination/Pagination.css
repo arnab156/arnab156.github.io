@@ -1,0 +1,28 @@
+.pagination {
+  margin-top: 2em;
+  width: 15em;
+  height: 4em;
+  border-radius: 8px;
+  background-color: transparent;
+  box-shadow: 0 0 8px rgba(0, 0, 255, .2);
+  display: flex;
+  justify-content: space-around;
+  margin:  auto;
+  align-items: center;
+}
+
+.pageNumber {
+  height: 2em;
+  width: 2em;
+  line-height: 1.8em;
+  font-size: small;
+  background-color: rgba(0, 0, 255, 0.1);
+  border-radius: 50%;
+}
+
+.number {
+  height: 2em;
+  width: 2em;
+  line-height: 1.8em;
+  font-size: small;
+}

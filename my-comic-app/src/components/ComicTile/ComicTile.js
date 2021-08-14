@@ -5,14 +5,13 @@ const ComicTile = ({
   title,
   image,
   alt,
-  num,
   date,
 }) => {  
   return (
     <div className="comicBlock">
       <h2>{title}</h2>
       <img src={image} alt={alt} />
-      <p>Comic#{num} Published:{date}</p>
+      <p>Published:{date}</p>
     </div>
   );
 };

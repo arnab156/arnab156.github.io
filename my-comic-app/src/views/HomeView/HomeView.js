@@ -5,7 +5,6 @@ import Header from '../../components/Header/Header';
 import { ComicsContext } from '../../provider/ComicsProvider';
 import ComicTile from '../../components/ComicTile/ComicTile';
 import Pagination from '../../components/Pagination/Pagination';
-
 import './HomeView.css';
 
 const HomeView = () => {  
@@ -24,7 +23,6 @@ const HomeView = () => {
       setCurrentComicNumber(comicsList.length);
     }
   }, [comicsList]);
-
 
   const handleNextClick = async (e) => {
     e.preventDefault();
@@ -46,18 +44,43 @@ const HomeView = () => {
     }
   };
 
+  const onPageNumberClick  = (num) => num;
+
+  const setter = (response) => (
+    setComicsList([
+    ...comicsList,
+    ...response,
+    ])
+  );
+
+  const onPageSet = async (num) => {
+    if (num < currentComicNumber) {
+      setCurrentComicNumber(num);
+    } else {
+      if (comicsList[num-1]) {
+        setCurrentComicNumber(num)
+      }
+      else {
+        const arrayToBeAdded = [];
+        for (let i=0; i < (num - comicsList.length); i++) {
+          const response = await getComicByNumber((comicsList[comicsList.length-1].num) - (i+1));
+          arrayToBeAdded.push(response);
+        }
+        setter(arrayToBeAdded);
+      }
+    }
+  };
+
   return (
     <div>
       <Header />   
         <div className="container">
-    
           <div className="arrow">
             {
               currentComicNumber > 1
               && <ChevronsLeft onClick={handlePreviousClick} />
             }
           </div>
-
           {
             comicsList && (
               <ComicTile
@@ -65,22 +88,20 @@ const HomeView = () => {
                 image={comicsList[currentComicNumber-1].img}
                 alt={comicsList[currentComicNumber-1].alt}
                 date={`${comicsList[currentComicNumber-1].month}/${comicsList[currentComicNumber-1].day}/${comicsList[currentComicNumber-1].year}`}
-                num={currentComicNumber}
               />
             )
           }
-
           <div className="arrow">
             <ChevronsRight onClick={handleNextClick} />
           </div>        
         </div>
-  
         { 
-            <Pagination 
-              // totalPage={comicsList && comicsList[0].num}
-              currentPage={currentComicNumber}
-            />
-          }
+          <Pagination 
+            totalPage={comicsList && comicsList[0].num}
+            currentPage={currentComicNumber}
+            onClick={onPageNumberClick(onPageSet)}
+          />
+        }
       <footer>
         ©2021-2022 Arnab's Comics.
       </footer>

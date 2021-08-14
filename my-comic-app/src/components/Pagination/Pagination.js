@@ -5,7 +5,7 @@ import './Pagination.css';
 const Pagination = ({
   currentPage,
   totalPage,
-  // onClick,
+  onClick,
 }) => {
   const initialBlock = [1,2,3,4,5,6,7];
   const [pageBlock, setPageBlock] = React.useState(initialBlock);
@@ -15,7 +15,6 @@ const Pagination = ({
   },[]);
 
   React.useEffect(() => {
-
     if (currentPage > 4) {
       const newArr = [];
       for(let i = -3; i < 4; i++) {
@@ -27,6 +26,12 @@ const Pagination = ({
       setPageBlock(initialBlock);
     }
   }, [currentPage]);
+
+  const handleClick = (n) => {
+    if (onClick) {
+      onClick(n);
+    }
+  };
 
   if (!currentPage) {
     return null;
@@ -40,7 +45,10 @@ const Pagination = ({
             <p className={classnames({
               'pageNumber': currentPage === num,
               'number': currentPage !== num,
-            })}>
+            })}
+              onClick={() => handleClick(num)}
+              key={`pageNum-${num}`}
+            >
               {num}
             </p>
             );

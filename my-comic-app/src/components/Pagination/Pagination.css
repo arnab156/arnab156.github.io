@@ -26,3 +26,8 @@
   line-height: 1.8em;
   font-size: small;
 }
+
+.number:hover {
+  font-weight: bolder;
+  cursor: pointer;
+}

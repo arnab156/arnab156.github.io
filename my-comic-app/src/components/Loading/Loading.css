@@ -1,0 +1,29 @@
+@keyframes loading {
+  0% {
+    background-position: 0 50%
+  }
+  50% {
+    background-position: 100% 50%
+  }
+  100% {
+    background-position: 0 50%
+  }
+}
+
+.loading {
+  animation: loading 4s ease infinite;
+  background: linear-gradient(90deg, lightblue, aliceblue, azure);
+  width: 20vw;
+  height: 20vh;
+  background-size: 600%;
+}
+
+@keyframes spin {
+  100% { transform: rotate(360deg)}
+}
+
+.loader {
+  animation: spin 4s ease-in-out infinite;
+  width: 20vw;
+  height: 20vh;
+}

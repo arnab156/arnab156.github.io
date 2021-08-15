@@ -1,14 +1,15 @@
 import React from 'react';
-import { ChevronsLeft, ChevronsRight } from 'react-feather';
+import { ChevronLeft, ChevronRight } from 'react-feather';
 
 import Header from '../../components/Header/Header';
 import { ComicsContext } from '../../provider/ComicsProvider';
 import ComicTile from '../../components/ComicTile/ComicTile';
 import Pagination from '../../components/Pagination/Pagination';
+import Loading from '../../components/Loading/Loading';
 import './HomeView.css';
 
 const HomeView = () => {  
-  const { latestComic, getComicByNumber } = React.useContext(ComicsContext);
+  const { latestComic, getComicByNumber, inProgress } = React.useContext(ComicsContext);
   const [comicsList, setComicsList] = React.useState();
   const [currentComicNumber, setCurrentComicNumber] = React.useState(1);
 
@@ -58,7 +59,7 @@ const HomeView = () => {
       setCurrentComicNumber(num);
     } else {
       if (comicsList[num-1]) {
-        setCurrentComicNumber(num)
+        setCurrentComicNumber(num);
       }
       else {
         const arrayToBeAdded = [];
@@ -78,11 +79,11 @@ const HomeView = () => {
           <div className="arrow">
             {
               currentComicNumber > 1
-              && <ChevronsLeft onClick={handlePreviousClick} />
+              && <ChevronLeft onClick={handlePreviousClick} />
             }
           </div>
           {
-            comicsList && (
+            (comicsList && !inProgress) && (
               <ComicTile
                 title={comicsList[currentComicNumber-1].title || ''}
                 image={comicsList[currentComicNumber-1].img}
@@ -91,8 +92,11 @@ const HomeView = () => {
               />
             )
           }
+          {
+            (!comicsList || inProgress) && <Loading />
+          }
           <div className="arrow">
-            <ChevronsRight onClick={handleNextClick} />
+            <ChevronRight onClick={handleNextClick} />
           </div>        
         </div>
         { 

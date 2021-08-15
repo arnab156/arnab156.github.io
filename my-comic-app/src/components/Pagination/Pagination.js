@@ -1,5 +1,7 @@
 import React from 'react';
 import classnames from 'classnames';
+import { ChevronsLeft } from 'react-feather';
+
 import './Pagination.css';
 
 const Pagination = ({
@@ -39,6 +41,9 @@ const Pagination = ({
 
   return (
     <div className="pagination">
+      {
+        currentPage > 4 && <ChevronsLeft onClick={() => handleClick(1)} />
+      }
       {
         pageBlock.map(num => {
           return (

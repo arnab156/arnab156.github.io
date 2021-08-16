@@ -13,9 +13,10 @@ const ComicTile = ({
       tabIndex="0"
       aria-label="comic tile"
     >
-      <h2 tabIndex="0">{title}</h2>
+      <h1 tabIndex="0">{title}</h1>
       <img src={image} alt={alt} tabIndex="0" />
-      <p tabIndex="0">Published:{date}</p>
+      <p aria-hidden={true}>{alt}</p>
+      <p tabIndex="0">Published: {date}</p>
     </div>
   );
 };

@@ -6,6 +6,7 @@ import { ComicsContext } from '../../provider/ComicsProvider';
 import ComicTile from '../../components/ComicTile/ComicTile';
 import Pagination from '../../components/Pagination/Pagination';
 import Loading from '../../components/Loading/Loading';
+import Footer from '../../components/Footer/Footer';
 import './HomeView.css';
 
 const HomeView = () => {  
@@ -120,9 +121,7 @@ const HomeView = () => {
             onClick={onPageNumberClick(onPageSet)}
           />
         }
-      <footer>
-        ©2021-2022 Arnab's Comic Store.
-      </footer>
+        <Footer/>
     </div>
   );
 };

@@ -43,7 +43,7 @@
 }
 
 .comicBlock > img:focus {
-  outline-color: black;
+  outline-color: 0 0 8px rgb(0,0,0);
 }
 
 .comicBlock > p:focus { 

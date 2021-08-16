@@ -7,7 +7,7 @@ const About = () => {
     <div>
       <Header />
       <p> Get your best comic update here</p>
-      <img src="https://via.placeholder.com/150" alt="placeholder image" />
+      <img src="https://via.placeholder.com/150" alt="placeholder" />
     </div>
   );
 };

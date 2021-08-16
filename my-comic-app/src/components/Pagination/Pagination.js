@@ -6,7 +6,6 @@ import './Pagination.css';
 
 const Pagination = ({
   currentPage,
-  totalPage,
   onClick,
 }) => {
   const initialBlock = [1,2,3,4,5,6,7];
@@ -42,20 +41,31 @@ const Pagination = ({
   return (
     <div className="pagination">
       {
-        currentPage > 4 && <ChevronsLeft onClick={() => handleClick(1)} />
+        currentPage > 4 && (
+          <ChevronsLeft 
+            className="paginationArrow" 
+            onClick={() => handleClick(1)} 
+            onKeyPress={() => handleClick(1)} 
+            tabIndex="0"
+          />
+        )
       }
       {
         pageBlock.map(num => {
           return (
-            <p className={classnames({
+            <div className={classnames({
               'pageNumber': currentPage === num,
               'number': currentPage !== num,
             })}
               onClick={() => handleClick(num)}
+              onKeyPress={() => handleClick(num)}
               key={`pageNum-${num}`}
+              tabIndex={0}
+              role="button"
+              aria-label={`page number ${num}`}
             >
               {num}
-            </p>
+            </div>
             );
         })
       }

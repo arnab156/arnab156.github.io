@@ -4,20 +4,24 @@
   height: 4em;
   border-radius: 8px;
   background-color: transparent;
-  box-shadow: 0 0 8px rgba(0, 0, 255, .2);
+  box-shadow: 0 0 8px rgba(255,204,0, 0.5);
   display: flex;
   justify-content: space-around;
-  margin:  auto;
+  margin: 0 auto 2em;
   align-items: center;
 }
 
 .pageNumber {
   height: 2em;
   width: 2em;
-  line-height: 1.8em;
+  line-height: 1.9em;
   font-size: small;
-  background-color: rgba(0, 0, 255, 0.1);
+  background-color: rgba(255,204,0, 0.5);
   border-radius: 50%;
+  text-align: center;
+}
+.pageNumber:focus {
+  outline-color: black;
 }
 
 .number {
@@ -27,7 +31,27 @@
   font-size: small;
 }
 
+.number:focus {
+  font-weight: bolder;
+  outline-color: gold;
+}
+
 .number:hover {
   font-weight: bolder;
+  cursor: pointer;
+}
+
+.paginationArrow {
+  border-radius: 50%;
+}
+
+.paginationArrow:focus {
+  color: rgba(255,204,0, 1);
+  background-color: black;
+}
+
+.paginationArrow:hover {
+  color: rgba(255,204,0, 1);
+  background-color: black;
   cursor: pointer;
 }

@@ -76,10 +76,17 @@ const HomeView = () => {
     <div>
       <Header />   
         <div className="container">
-          <div className="arrow">
+          <div 
+            className="arrow"
+            role="button" 
+            onClick={handlePreviousClick} 
+            onKeyPress={handlePreviousClick}
+            tabIndex={currentComicNumber === 1 ? -1 : 0}
+            aria-label="previous comic"
+          >
             {
               currentComicNumber > 1
-              && <ChevronLeft onClick={handlePreviousClick} />
+              && <ChevronLeft aria-hidden={currentComicNumber === 1}/>
             }
           </div>
           {
@@ -95,8 +102,15 @@ const HomeView = () => {
           {
             (!comicsList || inProgress) && <Loading />
           }
-          <div className="arrow">
-            <ChevronRight onClick={handleNextClick} />
+          <div 
+            className="arrow" 
+            role="button" 
+            onClick={handleNextClick} 
+            onKeyPress={handleNextClick}
+            tabIndex={0}
+            aria-label="next comic"
+          >
+            <ChevronRight/>
           </div>        
         </div>
         { 
@@ -107,7 +121,7 @@ const HomeView = () => {
           />
         }
       <footer>
-        ©2021-2022 Arnab's Comics.
+        ©2021-2022 Arnab's Comic Store.
       </footer>
     </div>
   );

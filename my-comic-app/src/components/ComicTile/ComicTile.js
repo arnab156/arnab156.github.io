@@ -8,10 +8,14 @@ const ComicTile = ({
   date,
 }) => {  
   return (
-    <div className="comicBlock">
-      <h2>{title}</h2>
-      <img src={image} alt={alt} />
-      <p>Published:{date}</p>
+    <div 
+      className="comicBlock"
+      tabIndex="0"
+      aria-label="comic tile"
+    >
+      <h2 tabIndex="0">{title}</h2>
+      <img src={image} alt={alt} tabIndex="0" />
+      <p tabIndex="0">Published:{date}</p>
     </div>
   );
 };

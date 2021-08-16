@@ -1,5 +1,7 @@
 .comicBlock {
-  background-color: azure;
+  background-color:  rgba(255,204,0, 0.5);
+  border-radius: 5px;
+  width: 331px;
 }
 
 .comicBlock > h2 {
@@ -10,13 +12,40 @@
   width: 50vw;
 }
 
+.comicBlock > p { 
+  font-style: oblique;
+  margin-top: 4em;
+}
+
 @media only screen and (min-width: 600px) {
+  .comicBlock {
+    width: 488px;
+  }
   .comicBlock > img {
     max-width: 17em;
   }
 }
+@media only screen and (min-width: 768px) {
+  .comicBlock {
+    width: 600px;
+  }
+  .comicBlock > img {
+    max-width: 25em;
+  }
+}
 
-.comicBlock > p { 
-  font-style: oblique;
-  margin-top: 4em;
+.comicBlock:focus {
+  outline-color: gold;
+}
+
+.comicBlock > h2:focus {
+  outline-color: black;
+}
+
+.comicBlock > img:focus {
+  outline-color: black;
+}
+
+.comicBlock > p:focus { 
+  outline-color: black;
 }

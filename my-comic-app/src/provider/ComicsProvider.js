@@ -2,7 +2,7 @@ import React from 'react';
 
 export const ComicsContext = React.createContext({
   latest: [],
-  getComicByNumber: (num) => { return null; },
+  getComicByNumber: () => { return null; },
 });
 
 ComicsContext.displayName = 'Comics';
@@ -29,8 +29,8 @@ const ComicsProvider = ({
     setInProgress(true);
     try { 
       const response = await fetch(`https://getxkcd.now.sh/api/comic?num=${number}`)
-      .then(res => res.json())
-      .then( data => (data))
+        .then(res => res.json())
+        .then(data => data);
       return response;
    } catch (error) {
      throw(error);

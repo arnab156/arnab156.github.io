@@ -26,6 +26,14 @@ const HomeView = () => {
     }
   }, [comicsList]);
 
+
+  const comicSetter = (response) => (
+    setComicsList([
+      ...comicsList,
+      ...response,
+    ])
+  );
+
   const handleNextClick = async (e) => {
     e.preventDefault();
 
@@ -33,10 +41,7 @@ const HomeView = () => {
       setCurrentComicNumber(currentComicNumber+1);
     } else {
       const response = await getComicByNumber((comicsList[currentComicNumber-1].num) - 1);
-      setComicsList([
-        ...comicsList,
-        response,
-      ]);
+      comicSetter([response]);
     }
   };
 
@@ -48,29 +53,17 @@ const HomeView = () => {
 
   const onPageNumberClick  = (num) => num;
 
-  const setter = (response) => (
-    setComicsList([
-    ...comicsList,
-    ...response,
-    ])
-  );
-
   const onPageSet = async (num) => {
-    if (num < currentComicNumber) {
+    if (comicsList[num-1]) {
       setCurrentComicNumber(num);
     } else {
-      if (comicsList[num-1]) {
-        setCurrentComicNumber(num);
-      }
-      else {
         const arrayToBeAdded = [];
         for (let i=0; i < (num - comicsList.length); i++) {
           const response = await getComicByNumber((comicsList[comicsList.length-1].num) - (i+1));
           arrayToBeAdded.push(response);
         }
-        setter(arrayToBeAdded);
+        comicSetter(arrayToBeAdded);
       }
-    }
   };
 
   return (

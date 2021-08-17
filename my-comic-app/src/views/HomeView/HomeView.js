@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronLeft, ChevronRight } from 'react-feather';
+import { useSwipeable } from 'react-swipeable';
 
 import Header from '../../components/Header/Header';
 import { ComicsContext } from '../../provider/ComicsProvider';
@@ -34,15 +35,18 @@ const HomeView = () => {
     ])
   );
 
-  const handleNextClick = async (e) => {
-    e.preventDefault();
-
+  const swipeNext = async () => {
     if (comicsList[currentComicNumber]) {
       setCurrentComicNumber(currentComicNumber+1);
     } else {
       const response = await getComicByNumber((comicsList[currentComicNumber-1].num) - 1);
       comicSetter([response]);
     }
+  };
+
+  const handleNextClick = (e) => {
+    e.preventDefault();
+    swipeNext();
   };
 
   const handlePreviousClick = () => {
@@ -66,10 +70,15 @@ const HomeView = () => {
       }
   };
 
+  const swipeHandler = useSwipeable({
+    onSwipedRight: handlePreviousClick,
+    onSwipedLeft: swipeNext,
+  });
+
   return (
     <div>
       <Header />   
-        <div className="container">
+        <div className="container" {...swipeHandler}>
           <div 
             className="arrow"
             role="button" 
@@ -86,7 +95,7 @@ const HomeView = () => {
           {
             (comicsList && !inProgress) && (
               <ComicTile
-                title={comicsList[currentComicNumber-1].title || ''}
+                title={comicsList[currentComicNumber-1].title}
                 image={comicsList[currentComicNumber-1].img}
                 alt={comicsList[currentComicNumber-1].alt}
                 date={`${comicsList[currentComicNumber-1].month}/${comicsList[currentComicNumber-1].day}/${comicsList[currentComicNumber-1].year}`}

@@ -1,0 +1,15 @@
+.error {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  max-height: 32px;
+  padding: 24px 32px;
+  background-color: gold; 
+  font-weight: bold;
+}
+
+@media only screen and (min-width: 600px) {
+  .error {
+    font-size: 24px;
+  }
+}

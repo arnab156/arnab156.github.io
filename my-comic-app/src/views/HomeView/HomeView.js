@@ -88,7 +88,7 @@ const HomeView = () => {
             aria-label="previous comic"
           >
             {
-              currentComicNumber > 1
+              comicsList && currentComicNumber > 1
               && <ChevronLeft aria-hidden={currentComicNumber === 1}/>
             }
           </div>
@@ -105,20 +105,21 @@ const HomeView = () => {
           {
             (!comicsList || inProgress) && <Loading />
           }
-          <div 
-            className="arrow" 
-            role="button" 
-            onClick={handleNextClick} 
-            onKeyPress={handleNextClick}
-            tabIndex={0}
-            aria-label="next comic"
-          >
-            <ChevronRight/>
-          </div>        
+          {
+            comicsList && comicsList[0] && (<div 
+              className="arrow" 
+              role="button" 
+              onClick={handleNextClick} 
+              onKeyPress={handleNextClick}
+              tabIndex={0}
+              aria-label="next comic"
+            >
+              <ChevronRight/>
+            </div>)
+          }        
         </div>
         { 
-          <Pagination 
-            totalPage={comicsList && comicsList[0].num}
+          comicsList && comicsList[0] && <Pagination 
             currentPage={currentComicNumber}
             onClick={onPageNumberClick(onPageSet)}
           />

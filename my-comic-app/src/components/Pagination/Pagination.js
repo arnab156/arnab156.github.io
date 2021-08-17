@@ -4,11 +4,12 @@ import { ChevronsLeft } from 'react-feather';
 
 import './Pagination.css';
 
+const initialBlock = [1,2,3,4,5,6,7];
+
 const Pagination = ({
   currentPage,
   onClick,
 }) => {
-  const initialBlock = [1,2,3,4,5,6,7];
   const [pageBlock, setPageBlock] = React.useState(initialBlock);
 
   React.useEffect(() => {
@@ -26,7 +27,7 @@ const Pagination = ({
     } else if (pageBlock !== initialBlock) {
       setPageBlock(initialBlock);
     }
-  }, [currentPage]);
+  }, [currentPage, pageBlock]);
 
   const handleClick = (n) => {
     if (onClick) {
@@ -39,7 +40,7 @@ const Pagination = ({
   }
 
   return (
-    <div className="pagination">
+    <div className="pagination" tabIndex={0}>
       {
         currentPage > 4 && (
           <ChevronsLeft 

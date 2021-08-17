@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import HomeView from './views/HomeView/HomeView';
 import NoMatch from './components/NoMatch/NoMatch';
-import About from './components/About/About';
+import About from './views/About/About';
 import ComicsProvider from './provider/ComicsProvider';
 
 import './App.css';

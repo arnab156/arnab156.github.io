@@ -35,7 +35,7 @@ const HomeView = () => {
     ])
   );
 
-  const swipeNext = async () => {
+  const goNext = async () => {
     if (comicsList[currentComicNumber]) {
       setCurrentComicNumber(currentComicNumber+1);
     } else {
@@ -46,7 +46,7 @@ const HomeView = () => {
 
   const handleNextClick = (e) => {
     e.preventDefault();
-    swipeNext();
+    goNext();
   };
 
   const handlePreviousClick = () => {
@@ -72,7 +72,7 @@ const HomeView = () => {
 
   const swipeHandler = useSwipeable({
     onSwipedRight: handlePreviousClick,
-    onSwipedLeft: swipeNext,
+    onSwipedLeft: goNext,
   });
 
   return (
